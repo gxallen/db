@@ -2,6 +2,9 @@
 
 # Copyright 2013 Grant Allen, gxallen@gmail.com
 # Licenced under the Apache Licence v2.0, www.apache.org/licenses
+#
+# Currently publically available from:
+# https://github.com/grantoq/db/blob/master/MySQL/scripts/make_simple_sandbox.sh
 
 #Common functions
 usage() {
@@ -233,7 +236,7 @@ info "Initialising MySQL data directories"
 loopcount=1
 while [ ${loopcount} -le ${SANDBOX_INSTANCES} ]
 do
-  ${MYSQL_INSTALL_DIR}/scripts/mysql_install_db --datadir=${SANDBOX_BASE}/mysql${loopcount}/data
+  ${MYSQL_INSTALL_DIR}/scripts/mysql_install_db --defaults-file=${SANDBOX_BASE}/mysql${loopcount}/my.cnf --datadir=${SANDBOX_BASE}/mysql${loopcount}/data
   loopcount=`expr ${loopcount} + 1`
 done
 
